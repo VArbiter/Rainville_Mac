@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		373C4C491FDF87A1006DDF5F /* CCLocalizedHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 373C4C471FDF87A1006DDF5F /* CCLocalizedHelper.m */; };
+		373C4C571FDFC40B006DDF5F /* CCMainController.m in Sources */ = {isa = PBXBuildFile; fileRef = 373C4C561FDFC40B006DDF5F /* CCMainController.m */; };
 		377DF82B1FD7A4E20054C240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377DF82A1FD7A4E20054C240 /* Assets.xcassets */; };
 		377DF8311FD7A4E20054C240 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8301FD7A4E20054C240 /* main.m */; };
 		377DF8911FD8330A0054C240 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 377DF8641FD8330A0054C240 /* Localizable.strings */; };
@@ -30,7 +31,6 @@
 		377DF8A21FD8330A0054C240 /* _5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 377DF87E1FD8330A0054C240 /* _5.wav */; };
 		377DF8A31FD8330A0054C240 /* _4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 377DF87F1FD8330A0054C240 /* _4.wav */; };
 		377DF8A41FD8330A0054C240 /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8821FD8330A0054C240 /* CCAppDelegate.m */; };
-		377DF8A51FD8330A0054C240 /* CCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8871FD8330A0054C240 /* CCMainViewController.m */; };
 		377DF8A71FD8330A0054C240 /* CCBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF88C1FD8330A0054C240 /* CCBaseView.m */; };
 		377DF8A81FD8330A0054C240 /* CCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF88F1FD8330A0054C240 /* CCBaseViewController.m */; };
 		37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E4D8731FDE231300DFA952 /* CCLabel.m */; };
@@ -39,6 +39,8 @@
 /* Begin PBXFileReference section */
 		373C4C471FDF87A1006DDF5F /* CCLocalizedHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCLocalizedHelper.m; sourceTree = "<group>"; };
 		373C4C481FDF87A1006DDF5F /* CCLocalizedHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalizedHelper.h; sourceTree = "<group>"; };
+		373C4C551FDFC40B006DDF5F /* CCMainController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCMainController.h; sourceTree = "<group>"; };
+		373C4C561FDFC40B006DDF5F /* CCMainController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCMainController.m; sourceTree = "<group>"; };
 		377DF8241FD7A4E20054C240 /* Rainville-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rainville-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		377DF82A1FD7A4E20054C240 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		377DF82F1FD7A4E20054C240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -69,8 +71,6 @@
 		377DF87F1FD8330A0054C240 /* _4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = _4.wav; sourceTree = "<group>"; };
 		377DF8811FD8330A0054C240 /* CCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAppDelegate.h; sourceTree = "<group>"; };
 		377DF8821FD8330A0054C240 /* CCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAppDelegate.m; sourceTree = "<group>"; };
-		377DF8871FD8330A0054C240 /* CCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMainViewController.m; sourceTree = "<group>"; };
-		377DF8891FD8330A0054C240 /* CCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMainViewController.h; sourceTree = "<group>"; };
 		377DF88C1FD8330A0054C240 /* CCBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseView.m; sourceTree = "<group>"; };
 		377DF88D1FD8330A0054C240 /* CCBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseView.h; sourceTree = "<group>"; };
 		377DF88F1FD8330A0054C240 /* CCBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseViewController.m; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 		377DF8861FD8330A0054C240 /* CCController */ = {
 			isa = PBXGroup;
 			children = (
-				377DF8871FD8330A0054C240 /* CCMainViewController.m */,
-				377DF8891FD8330A0054C240 /* CCMainViewController.h */,
+				373C4C551FDFC40B006DDF5F /* CCMainController.h */,
+				373C4C561FDFC40B006DDF5F /* CCMainController.m */,
 			);
 			path = CCController;
 			sourceTree = "<group>";
@@ -385,8 +385,8 @@
 				37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */,
 				377DF8A81FD8330A0054C240 /* CCBaseViewController.m in Sources */,
 				377DF8A41FD8330A0054C240 /* CCAppDelegate.m in Sources */,
+				373C4C571FDFC40B006DDF5F /* CCMainController.m in Sources */,
 				373C4C491FDF87A1006DDF5F /* CCLocalizedHelper.m in Sources */,
-				377DF8A51FD8330A0054C240 /* CCMainViewController.m in Sources */,
 				377DF8311FD7A4E20054C240 /* main.m in Sources */,
 				377DF8A71FD8330A0054C240 /* CCBaseView.m in Sources */,
 			);

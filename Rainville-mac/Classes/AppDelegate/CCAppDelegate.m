@@ -9,13 +9,13 @@
 #import "CCAppDelegate.h"
 
 #import "CCLocalizedHelper.h"
-#import "CCMainViewController.h"
+#import "CCMainController.h"
 
 @interface CCAppDelegate ()
 
 @property (nonatomic , strong) NSWindow *window;
 
-@property (nonatomic , strong) CCMainViewController *mainController ;
+@property (nonatomic , strong) CCMainController *mainController ;
 
 @end
 
@@ -25,7 +25,7 @@
     [self.window center];
     [self.window makeKeyAndOrderFront:nil];
     [self.window.contentView addSubview:self.mainController.view];
-    self.mainController.view.frame = self.window.contentView.frame;
+    self.mainController.view.frame = self.window.contentView.bounds;
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
@@ -36,9 +36,9 @@
     
 }
 
-- (CCMainViewController *)mainController {
+- (CCMainController *)mainController {
     if (_mainController) return _mainController;
-    CCMainViewController *m = [[CCMainViewController alloc] init];
+    CCMainController *m = [[CCMainController alloc] init];
     _mainController = m;
     return _mainController;
 }
