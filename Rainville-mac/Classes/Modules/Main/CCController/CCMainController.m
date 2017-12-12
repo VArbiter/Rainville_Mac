@@ -41,7 +41,7 @@
     l.font = [NSFont systemFontOfSize:12.f];
     l.alignment = NSTextAlignmentCenter;
     l.maximumNumberOfLines = 0;
-    l.text = _CC_RAIN_POEM_();
+    l.text = [NSString stringWithFormat:@"\n\n\n%@",_CC_RAIN_POEM_()];
     l.backgroundColor = NSColor.clearColor;
     l.textColor = [NSColor colorWithRed:67.f / 255.f green:77.f / 255.f blue:91.f / 255.f alpha:1.f];
     _labelPoem = l;
