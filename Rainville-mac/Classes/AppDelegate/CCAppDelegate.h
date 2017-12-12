@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  CCAppDelegate.h
 //  Rainville-mac
 //
 //  Created by 冯明庆 on 06/12/2017.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface CCAppDelegate : NSObject <NSApplicationDelegate>
 
 
 @end

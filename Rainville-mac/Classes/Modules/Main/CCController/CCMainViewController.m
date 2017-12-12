@@ -20,7 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.layer.backgroundColor = NSColor.cyanColor.CGColor;
 }
 
 - (void)viewWillLayout {
@@ -35,6 +35,7 @@
     l.alignment = NSTextAlignmentCenter;
     l.maximumNumberOfLines = 0;
     l.text = _CC_RAIN_POEM_();
+    l.backgroundColor = NSColor.blackColor;
     _labelPoem = l;
     return _labelPoem;
 }

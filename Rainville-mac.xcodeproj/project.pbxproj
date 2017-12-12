@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		373C4C491FDF87A1006DDF5F /* CCLocalizedHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 373C4C471FDF87A1006DDF5F /* CCLocalizedHelper.m */; };
 		377DF82B1FD7A4E20054C240 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 377DF82A1FD7A4E20054C240 /* Assets.xcassets */; };
-		377DF82E1FD7A4E20054C240 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 377DF82C1FD7A4E20054C240 /* MainMenu.xib */; };
 		377DF8311FD7A4E20054C240 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8301FD7A4E20054C240 /* main.m */; };
 		377DF8911FD8330A0054C240 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 377DF8641FD8330A0054C240 /* Localizable.strings */; };
 		377DF8921FD8330A0054C240 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 377DF8661FD8330A0054C240 /* InfoPlist.strings */; };
@@ -30,7 +29,7 @@
 		377DF8A11FD8330A0054C240 /* _7.wav in Resources */ = {isa = PBXBuildFile; fileRef = 377DF87D1FD8330A0054C240 /* _7.wav */; };
 		377DF8A21FD8330A0054C240 /* _5.wav in Resources */ = {isa = PBXBuildFile; fileRef = 377DF87E1FD8330A0054C240 /* _5.wav */; };
 		377DF8A31FD8330A0054C240 /* _4.wav in Resources */ = {isa = PBXBuildFile; fileRef = 377DF87F1FD8330A0054C240 /* _4.wav */; };
-		377DF8A41FD8330A0054C240 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8821FD8330A0054C240 /* AppDelegate.m */; };
+		377DF8A41FD8330A0054C240 /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8821FD8330A0054C240 /* CCAppDelegate.m */; };
 		377DF8A51FD8330A0054C240 /* CCMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8871FD8330A0054C240 /* CCMainViewController.m */; };
 		377DF8A71FD8330A0054C240 /* CCBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF88C1FD8330A0054C240 /* CCBaseView.m */; };
 		377DF8A81FD8330A0054C240 /* CCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF88F1FD8330A0054C240 /* CCBaseViewController.m */; };
@@ -42,7 +41,6 @@
 		373C4C481FDF87A1006DDF5F /* CCLocalizedHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCLocalizedHelper.h; sourceTree = "<group>"; };
 		377DF8241FD7A4E20054C240 /* Rainville-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rainville-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		377DF82A1FD7A4E20054C240 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		377DF82D1FD7A4E20054C240 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		377DF82F1FD7A4E20054C240 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		377DF8301FD7A4E20054C240 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		377DF8321FD7A4E20054C240 /* Rainville_mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rainville_mac.entitlements; sourceTree = "<group>"; };
@@ -69,8 +67,8 @@
 		377DF87D1FD8330A0054C240 /* _7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = _7.wav; sourceTree = "<group>"; };
 		377DF87E1FD8330A0054C240 /* _5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = _5.wav; sourceTree = "<group>"; };
 		377DF87F1FD8330A0054C240 /* _4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = _4.wav; sourceTree = "<group>"; };
-		377DF8811FD8330A0054C240 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		377DF8821FD8330A0054C240 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		377DF8811FD8330A0054C240 /* CCAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAppDelegate.h; sourceTree = "<group>"; };
+		377DF8821FD8330A0054C240 /* CCAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAppDelegate.m; sourceTree = "<group>"; };
 		377DF8871FD8330A0054C240 /* CCMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCMainViewController.m; sourceTree = "<group>"; };
 		377DF8891FD8330A0054C240 /* CCMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCMainViewController.h; sourceTree = "<group>"; };
 		377DF88C1FD8330A0054C240 /* CCBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseView.m; sourceTree = "<group>"; };
@@ -130,7 +128,6 @@
 			children = (
 				377DF8611FD8330A0054C240 /* Classes */,
 				377DF82A1FD7A4E20054C240 /* Assets.xcassets */,
-				377DF82C1FD7A4E20054C240 /* MainMenu.xib */,
 				377DF82F1FD7A4E20054C240 /* Info.plist */,
 				377DF8301FD7A4E20054C240 /* main.m */,
 				377DF8321FD7A4E20054C240 /* Rainville_mac.entitlements */,
@@ -212,8 +209,8 @@
 		377DF8801FD8330A0054C240 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				377DF8811FD8330A0054C240 /* AppDelegate.h */,
-				377DF8821FD8330A0054C240 /* AppDelegate.m */,
+				377DF8811FD8330A0054C240 /* CCAppDelegate.h */,
+				377DF8821FD8330A0054C240 /* CCAppDelegate.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -321,6 +318,7 @@
 		377DF81C1FD7A4E20054C240 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CC;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "冯明庆";
 				TargetAttributes = {
@@ -366,7 +364,6 @@
 				377DF8941FD8330A0054C240 /* ArrayItem_CH.plist in Resources */,
 				377DF8A21FD8330A0054C240 /* _5.wav in Resources */,
 				377DF8911FD8330A0054C240 /* Localizable.strings in Resources */,
-				377DF82E1FD7A4E20054C240 /* MainMenu.xib in Resources */,
 				377DF8961FD8330A0054C240 /* Default-568h@2x.png in Resources */,
 				377DF89C1FD8330A0054C240 /* _0.wav in Resources */,
 				377DF8931FD8330A0054C240 /* ArrayItem_EN.plist in Resources */,
@@ -387,7 +384,7 @@
 			files = (
 				37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */,
 				377DF8A81FD8330A0054C240 /* CCBaseViewController.m in Sources */,
-				377DF8A41FD8330A0054C240 /* AppDelegate.m in Sources */,
+				377DF8A41FD8330A0054C240 /* CCAppDelegate.m in Sources */,
 				373C4C491FDF87A1006DDF5F /* CCLocalizedHelper.m in Sources */,
 				377DF8A51FD8330A0054C240 /* CCMainViewController.m in Sources */,
 				377DF8311FD7A4E20054C240 /* main.m in Sources */,
@@ -398,14 +395,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		377DF82C1FD7A4E20054C240 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				377DF82D1FD7A4E20054C240 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		377DF8641FD8330A0054C240 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
