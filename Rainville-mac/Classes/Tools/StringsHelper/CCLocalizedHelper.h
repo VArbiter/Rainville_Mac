@@ -6,9 +6,7 @@
 //  Copyright © 2017年 冯明庆. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface CCLocalizedHelper : NSObject
+@import Foundation;
 
 NSString * _CC_LANGUAGE_(void) ;
 NSString * _CC_APP_NAME_(void) ;
@@ -40,4 +38,3 @@ NSArray * _CC_ARRAY_ITEM_(void) ;
 //ElegantIcons
 //Weather Icons
 //Musket /Bold /Regular
-@end

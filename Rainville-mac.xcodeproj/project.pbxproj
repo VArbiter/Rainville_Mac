@@ -33,6 +33,8 @@
 		377DF8A41FD8330A0054C240 /* CCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF8821FD8330A0054C240 /* CCAppDelegate.m */; };
 		377DF8A71FD8330A0054C240 /* CCBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF88C1FD8330A0054C240 /* CCBaseView.m */; };
 		377DF8A81FD8330A0054C240 /* CCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 377DF88F1FD8330A0054C240 /* CCBaseViewController.m */; };
+		379270581FE0C5ED0033965D /* CCAudioPreset.m in Sources */ = {isa = PBXBuildFile; fileRef = 379270571FE0C5ED0033965D /* CCAudioPreset.m */; };
+		3792705B1FE0C6010033965D /* CCAudioHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3792705A1FE0C6010033965D /* CCAudioHandler.m */; };
 		37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E4D8731FDE231300DFA952 /* CCLabel.m */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,10 @@
 		377DF88D1FD8330A0054C240 /* CCBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseView.h; sourceTree = "<group>"; };
 		377DF88F1FD8330A0054C240 /* CCBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBaseViewController.m; sourceTree = "<group>"; };
 		377DF8901FD8330A0054C240 /* CCBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCBaseViewController.h; sourceTree = "<group>"; };
+		379270561FE0C5ED0033965D /* CCAudioPreset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCAudioPreset.h; sourceTree = "<group>"; };
+		379270571FE0C5ED0033965D /* CCAudioPreset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCAudioPreset.m; sourceTree = "<group>"; };
+		379270591FE0C6010033965D /* CCAudioHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAudioHandler.h; sourceTree = "<group>"; };
+		3792705A1FE0C6010033965D /* CCAudioHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAudioHandler.m; sourceTree = "<group>"; };
 		37E4D8721FDE231300DFA952 /* CCLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLabel.h; sourceTree = "<group>"; };
 		37E4D8731FDE231300DFA952 /* CCLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,6 +99,7 @@
 		373C4C451FDF8789006DDF5F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				379270531FE0C5ED0033965D /* Audio */,
 				373C4C461FDF87A1006DDF5F /* StringsHelper */,
 			);
 			path = Tools;
@@ -275,6 +282,33 @@
 			path = CCController;
 			sourceTree = "<group>";
 		};
+		379270531FE0C5ED0033965D /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				379270541FE0C5ED0033965D /* Handler */,
+				379270551FE0C5ED0033965D /* Preset */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		379270541FE0C5ED0033965D /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				379270591FE0C6010033965D /* CCAudioHandler.h */,
+				3792705A1FE0C6010033965D /* CCAudioHandler.m */,
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		379270551FE0C5ED0033965D /* Preset */ = {
+			isa = PBXGroup;
+			children = (
+				379270561FE0C5ED0033965D /* CCAudioPreset.h */,
+				379270571FE0C5ED0033965D /* CCAudioPreset.m */,
+			);
+			path = Preset;
+			sourceTree = "<group>";
+		};
 		37E4D8701FDE230500DFA952 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,11 +416,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3792705B1FE0C6010033965D /* CCAudioHandler.m in Sources */,
 				37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */,
 				377DF8A81FD8330A0054C240 /* CCBaseViewController.m in Sources */,
 				377DF8A41FD8330A0054C240 /* CCAppDelegate.m in Sources */,
 				373C4C571FDFC40B006DDF5F /* CCMainController.m in Sources */,
 				373C4C491FDF87A1006DDF5F /* CCLocalizedHelper.m in Sources */,
+				379270581FE0C5ED0033965D /* CCAudioPreset.m in Sources */,
 				377DF8311FD7A4E20054C240 /* main.m in Sources */,
 				377DF8A71FD8330A0054C240 /* CCBaseView.m in Sources */,
 			);
@@ -466,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -515,7 +551,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};

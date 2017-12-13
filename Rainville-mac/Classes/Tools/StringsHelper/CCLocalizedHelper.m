@@ -8,8 +8,6 @@
 
 #import "CCLocalizedHelper.h"
 
-@implementation CCLocalizedHelper
-
 NSString * _CC_LANGUAGE_() {
     return NSLocalizedString(@"_CC_LANGUAGE_", nil);
 }
@@ -78,5 +76,3 @@ NSArray * _CC_ARRAY_ITEM_() {
                                                                 ofType:@"plist"];
     return [NSArray arrayWithContentsOfFile:stringFilePath];
 }
-
-@end
