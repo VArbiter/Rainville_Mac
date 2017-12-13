@@ -10,10 +10,12 @@
 
 #import "CCLabel.h"
 #import "CCLocalizedHelper.h"
+#import "CCScrollContent.h"
 
 @interface CCMainController ()
 
 @property (nonatomic , strong) NSLabel *labelPoem ;
+@property (nonatomic , strong) CCScrollContent *scrollContent ;
 
 @end
 
@@ -37,7 +39,15 @@
 
 - (void)viewWillLayout {
     [super viewWillLayout];
-    [self.view addSubview:self.labelPoem];
+    [self.view addSubview:self.scrollContent];
+    [self.scrollContent addSubview:self.labelPoem];
+}
+
+- (CCScrollContent *)scrollContent {
+    if (_scrollContent) return _scrollContent;
+    CCScrollContent *v = [[CCScrollContent alloc] initWithFrame:self.view.bounds];
+    _scrollContent = v;
+    return _scrollContent;
 }
 
 - (NSLabel *)labelPoem {
@@ -48,7 +58,8 @@
     l.maximumNumberOfLines = 0;
     l.text = [NSString stringWithFormat:@"\n\n\n%@",_CC_RAIN_POEM_()];
     l.backgroundColor = NSColor.clearColor;
-    l.textColor = [NSColor colorWithRed:67.f / 255.f green:77.f / 255.f blue:91.f / 255.f alpha:1.f];
+//    l.textColor = [NSColor colorWithRed:67.f / 255.f green:77.f / 255.f blue:91.f / 255.f alpha:1.f];
+    l.textColor = NSColor.whiteColor ;
     _labelPoem = l;
     return _labelPoem;
 }

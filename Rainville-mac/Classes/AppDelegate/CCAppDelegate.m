@@ -45,15 +45,16 @@
 
 - (NSWindow *)window {
     if (_window) return _window;
+    // (NSRect){0,0,320,567}
     NSWindowStyleMask style = NSWindowStyleMaskTitled | NSWindowStyleMaskClosable
     | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskTexturedBackground ;
-    NSWindow *w = [[NSWindow alloc] initWithContentRect:(NSRect){0,0,320,567}
+    NSWindow *w = [[NSWindow alloc] initWithContentRect:(NSRect){0,0,320,320}
                                               styleMask:style
                                                 backing:NSBackingStoreBuffered
                                                   defer:YES
                                                  screen:NSScreen.mainScreen];
-    w.contentMinSize = (CGSize){320,567};
-    w.contentMaxSize = (CGSize){320,567};
+    w.contentMinSize = (CGSize){320,320};
+    w.contentMaxSize = (CGSize){320,320};
     w.backgroundColor = NSColor.whiteColor;
     w.title = _CC_APP_NAME_();
     _window = w;
