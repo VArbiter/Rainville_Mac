@@ -8,100 +8,100 @@
 
 #import "CCStatusBarPackager.h"
 
-@interface CCStatusBarPackager () < NSCopying , NSMutableCopying >
+@interface CCStatusBarPackager ()
 
 @property (nonatomic , strong , readwrite) NSStatusItem *statusItem ;
-@property (nonatomic , strong , readwrite) NSPopover *popover;
-@property (nonatomic , assign , readwrite) CCStatusBarController *contentController ;
-@property (nonatomic , strong , readwrite) NSEvent *eventMouseLeft ;
+@property (nonatomic , strong , readwrite) NSMenu *menuRainType ;
 
 - (void) ccDefaultSettings ;
-- (void) ccBarItemAction : (NSStatusBarButton *) item ;
 
 @end
 
-static CCStatusBarPackager *__instance = nil;
-
 @implementation CCStatusBarPackager
-
-+ (void)load {
-    [NSNotificationCenter.defaultCenter addObserverForName:NSApplicationDidFinishLaunchingNotification
-                                                    object:nil
-                                                     queue:nil
-                                                usingBlock:^(NSNotification * _Nonnull note) { 
-        __instance = [[CCStatusBarPackager alloc] init];
-    }];
-}
 
 - (instancetype)init {
     if ((self = [super init])) {
         [self ccDefaultSettings];
+        [self ccAutoAddMethod];
     }
     return self;
-}
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        __instance = [[super allocWithZone:zone] init];
-    });
-    return __instance;
-}
-
-- (id)copyWithZone:(NSZone *)zone {
-    return __instance;
-}
-- (id)mutableCopyWithZone:(NSZone *)zone {
-    return __instance;
 }
 
 - (void) ccDefaultSettings {
     [self statusItem];
 }
 
-- (void) ccBarItemAction : (NSStatusBarButton *) item {
-    [self.popover showRelativeToRect:item.bounds
-                              ofView:item
-                       preferredEdge:NSRectEdgeMaxY];
-}
-
 - (NSStatusItem *)statusItem {
     if (_statusItem) return _statusItem;
     NSStatusItem *b = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
     [b.button setImage:[NSImage imageNamed:@"icon_status_bar"]];
-    b.target = self;
-    b.action = @selector(ccBarItemAction:);
+    [b setToolTip:_CC_RAIN_POEM_()];
+    b.menu = self.menuRainType;
     _statusItem = b;
     return _statusItem;
 }
 
-- (NSPopover *)popover {
-    if (_popover) return _popover;
-    NSPopover *p = [[NSPopover alloc] init];
-    p.behavior = NSPopoverBehaviorTransient;
-    p.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-    p.contentViewController = self.contentController;
-    _popover = p;
-    return _popover;
+- (NSMenu *)menuRainType {
+    if (_menuRainType) return _menuRainType;
+    NSMenu *m = [[NSMenu alloc] initWithTitle:@"By Elwin Frederick"];
+    _menuRainType = m;
+    return _menuRainType;
 }
 
-- (CCStatusBarController *)contentController {
-    if (_contentController) return _contentController;
-    CCStatusBarController *c = [[CCStatusBarController alloc] init];
-    _contentController = c;
-    return _contentController;
+@end
+
+#pragma mark - -----
+
+#import <objc/runtime.h>
+
+@implementation NSMenuItem (CCAssists_MenuItem)
+
+- (void)setAVolumes:(NSArray *)aVolumes {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_VOLUME_ARRAY", aVolumes, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (NSArray *)aVolumes {
+    return objc_getAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_VOLUME_ARRAY");
 }
 
-- (NSEvent *)eventMouseLeft {
-    if (_eventMouseLeft) return _eventMouseLeft;
-    __weak typeof(self) pSelf = self;
-    NSEvent *e = [NSEvent addGlobalMonitorForEventsMatchingMask:NSEventMaskLeftMouseDown handler:^(NSEvent * sender) {
-        if (pSelf.popover.isShown) {
-            [pSelf.popover close];
-        }
+- (void)setIIndex:(NSInteger)iIndex {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_INDEX", @(iIndex), OBJC_ASSOCIATION_ASSIGN);
+}
+- (NSInteger)iIndex {
+    return [objc_getAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_INDEX") integerValue];
+}
+
+@end
+
+@implementation CCStatusBarPackager (CCAssists)
+
+- (void)setBClick:(void (^)(NSMenuItem *))bClick {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_CLICK_ACTION", bClick, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+- (void (^)(NSMenuItem *))bClick {
+    return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_CLICK_ACTION");
+}
+
+- (void) ccAutoAddMethod {
+    NSMenuItem *itemRainType = [[NSMenuItem alloc] initWithTitle:_CC_APP_DESP_() action:nil keyEquivalent:@""];
+    [self.menuRainType insertItem:itemRainType atIndex:0];
+    NSMenu *menuRain = [[NSMenu alloc] initWithTitle:@"RainType"];
+    itemRainType.submenu = menuRain;
+    
+    NSDictionary <NSString * , NSArray <NSNumber *> *> * d = cc_default_audio_settings();
+    NSArray <NSString *> * a = _CC_ARRAY_ITEM_();
+    [a enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.iIndex = idx;
+        item.aVolumes = d[obj];
+        item.title = obj;
+        item.target = self;
+        item.action = @selector(ccTriggerAction:);
+        [menuRain addItem:item];
     }];
-    _eventMouseLeft = e;
-    return _eventMouseLeft;
+}
+
+- (void) ccTriggerAction : (NSMenuItem *) item {
+    if (self.bClick) self.bClick(item);
 }
 
 @end

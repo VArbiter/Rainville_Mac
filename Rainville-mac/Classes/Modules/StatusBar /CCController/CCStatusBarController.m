@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.frame = (CGRect){0,0,600 , NSScreen.mainScreen.frame.size.height};
 }
 
 @end

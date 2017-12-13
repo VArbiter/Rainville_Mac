@@ -10,12 +10,10 @@
 
 #import "CCLabel.h"
 #import "CCLocalizedHelper.h"
-#import "CCAudioHandler.h"
 
 @interface CCMainController ()
 
 @property (nonatomic , strong) NSLabel *labelPoem ;
-@property (nonatomic , strong) CCAudioHandler *handler ;
 
 @end
 
@@ -30,9 +28,7 @@
 - (void)viewDidAppear {
     [super viewDidAppear];
 #warning TODO >>> TEST 
-    [self.handler ccSetPlayingArray:cc_default_audio_settings().allValues.firstObject complete:^(CCAudioHandler *sender) {
-        
-    }];
+   
 }
 
 - (void)viewDidLoad {
@@ -57,13 +53,5 @@
     _labelPoem = l;
     return _labelPoem;
 }
-
-- (CCAudioHandler *)handler {
-    if (_handler) return _handler;
-    CCAudioHandler *a = CCAudioHandler.shared;
-    _handler = a;
-    return _handler;
-}
-
 
 @end

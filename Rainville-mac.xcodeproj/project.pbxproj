@@ -37,6 +37,7 @@
 		3792705B1FE0C6010033965D /* CCAudioHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 3792705A1FE0C6010033965D /* CCAudioHandler.m */; };
 		379270601FE0E24C0033965D /* CCStatusBarPackager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3792705F1FE0E24C0033965D /* CCStatusBarPackager.m */; };
 		379270641FE0E6730033965D /* CCStatusBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 379270631FE0E6730033965D /* CCStatusBarController.m */; };
+		379270681FE10EB50033965D /* CCAudioOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 379270671FE10EB50033965D /* CCAudioOperator.m */; };
 		37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 37E4D8731FDE231300DFA952 /* CCLabel.m */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,8 @@
 		3792705F1FE0E24C0033965D /* CCStatusBarPackager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCStatusBarPackager.m; sourceTree = "<group>"; };
 		379270621FE0E6730033965D /* CCStatusBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCStatusBarController.h; sourceTree = "<group>"; };
 		379270631FE0E6730033965D /* CCStatusBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCStatusBarController.m; sourceTree = "<group>"; };
+		379270661FE10EB50033965D /* CCAudioOperator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCAudioOperator.h; sourceTree = "<group>"; };
+		379270671FE10EB50033965D /* CCAudioOperator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCAudioOperator.m; sourceTree = "<group>"; };
 		37E4D8721FDE231300DFA952 /* CCLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CCLabel.h; sourceTree = "<group>"; };
 		37E4D8731FDE231300DFA952 /* CCLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CCLabel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -319,6 +322,7 @@
 		3792705C1FE0E2290033965D /* StatusBar  */ = {
 			isa = PBXGroup;
 			children = (
+				379270651FE10EA80033965D /* Operator */,
 				379270611FE0E6610033965D /* CCController */,
 				3792705D1FE0E23E0033965D /* Packager */,
 			);
@@ -341,6 +345,15 @@
 				379270631FE0E6730033965D /* CCStatusBarController.m */,
 			);
 			path = CCController;
+			sourceTree = "<group>";
+		};
+		379270651FE10EA80033965D /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				379270661FE10EB50033965D /* CCAudioOperator.h */,
+				379270671FE10EB50033965D /* CCAudioOperator.m */,
+			);
+			path = Operator;
 			sourceTree = "<group>";
 		};
 		37E4D8701FDE230500DFA952 /* Custom */ = {
@@ -450,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379270681FE10EB50033965D /* CCAudioOperator.m in Sources */,
 				3792705B1FE0C6010033965D /* CCAudioHandler.m in Sources */,
 				379270601FE0E24C0033965D /* CCStatusBarPackager.m in Sources */,
 				37E4D8741FDE231300DFA952 /* CCLabel.m in Sources */,
