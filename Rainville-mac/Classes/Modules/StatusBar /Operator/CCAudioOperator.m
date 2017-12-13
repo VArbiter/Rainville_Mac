@@ -12,6 +12,8 @@
 
 @property (nonatomic , strong) CCAudioHandler *handler ;
 @property (nonatomic , strong) CCStatusBarPackager *packager ;
+@property (nonatomic , strong , readwrite) NSEvent *eventKeyMonitor ;
+
 - (void) ccDefaultSettings ;
 
 @end
@@ -58,6 +60,13 @@ static CCAudioOperator *__instance = nil;
             
         }];
     };
+    self.packager.bPlayAction = ^(NSMenuItem *sender, BOOL isPlay) {
+        if (isPlay) {
+            [pSelf.handler ccPlay];
+        }
+        else [pSelf.handler ccPause];
+    };
+    [self eventKeyMonitor];
 }
 
 - (CCStatusBarPackager *)packager {
@@ -72,6 +81,20 @@ static CCAudioOperator *__instance = nil;
     CCAudioHandler *a = CCAudioHandler.shared;
     _handler = a;
     return _handler;
+}
+
+- (NSEvent *)eventKeyMonitor {
+    if (_eventKeyMonitor) return _eventKeyMonitor;
+#warning TODO >>>
+    // 需要将 App 加入【设置】-【安全性与隐私】-【辅助功能】, 否则无效
+    NSEvent *e = [NSEvent addGlobalMonitorForEventsMatchingMask:NSEventMaskKeyDown
+                                                        handler:^(NSEvent *event){
+       NSString *chars = [[event characters] lowercaseString];
+       unichar character = [chars characterAtIndex:0];
+       NSLog(@"keydown globally! Which key? This key: %c", character);
+   }];
+    _eventKeyMonitor = e;
+    return _eventKeyMonitor;
 }
 
 @end

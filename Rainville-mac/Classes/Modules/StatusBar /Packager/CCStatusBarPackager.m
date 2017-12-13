@@ -80,11 +80,32 @@
 - (void (^)(NSMenuItem *))bClick {
     return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_CLICK_ACTION");
 }
+- (void)setBPlayAction:(void (^)(NSMenuItem *, BOOL))bPlayAction {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_PLAYING_ACTION", bPlayAction, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+- (void (^)(NSMenuItem *, BOOL))bPlayAction {
+    return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_PLAYING_ACTION");
+}
 
 - (void) ccAutoAddMethod {
+    NSMenuItem *itemRainPlay = [[NSMenuItem alloc] init];
+    itemRainPlay.title = _CC_PLAY_();
+    itemRainPlay.target = self;
+    itemRainPlay.action = @selector(ccPlayAction:);
+    itemRainPlay.keyEquivalent = @"R";
+    [self.menuRainType insertItem:itemRainPlay atIndex:0];
+    
+    NSMenuItem *itemRainPause = [[NSMenuItem alloc] init];
+    itemRainPause.title = _CC_STOP_();
+    itemRainPause.target = self;
+    itemRainPause.action = @selector(ccPauseAction:);
+    itemRainPause.keyEquivalent = @"P";
+    [self.menuRainType insertItem:itemRainPause atIndex:0];
+    
     NSMenuItem *itemRainType = [[NSMenuItem alloc] initWithTitle:_CC_APP_DESP_() action:nil keyEquivalent:@""];
     [self.menuRainType insertItem:itemRainType atIndex:0];
-    NSMenu *menuRain = [[NSMenu alloc] initWithTitle:@"RainType"];
+    
+    NSMenu *menuRain = [[NSMenu alloc] init];
     itemRainType.submenu = menuRain;
     
     NSDictionary <NSString * , NSArray <NSNumber *> *> * d = cc_default_audio_settings();
@@ -102,6 +123,12 @@
 
 - (void) ccTriggerAction : (NSMenuItem *) item {
     if (self.bClick) self.bClick(item);
+}
+- (void) ccPlayAction : (NSMenuItem *) item {
+    if (self.bPlayAction) self.bPlayAction(item, YES);
+}
+- (void) ccPauseAction : (NSMenuItem *) item {
+    if (self.bPlayAction) self.bPlayAction(item, false);
 }
 
 @end

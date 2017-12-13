@@ -24,10 +24,8 @@ NSTimeInterval _CC_FADE_DURATION_ = 1.f;
 @property (nonatomic , strong) NSArray <NSNumber *> *aVolumesCurrent ; // 当前音频数组
 @property (nonatomic , strong) NSMutableArray <AVAudioPlayer *> *aPlayers ; // 播放器队列
 
-@property (nonatomic , assign) cc_audio_playing_option_t option ;
+@property (nonatomic , assign , readwrite) cc_audio_playing_option_t option ;
 
-- (void) ccPlay ;
-- (void) ccPause ;
 - (void) ccInterPause ;
 
 + (NSString *) ccFormatTime : (NSTimeInterval) interval ;
@@ -51,38 +49,7 @@ NSTimeInterval _CC_FADE_DURATION_ = 1.f;
     self.aVolumesCurrent = aVolume.copy;
     [self ccPlay];
 }
-- (void) ccSetAction : (cc_audio_playing_option_t) option
-            complete : (void (^)(CCAudioHandler *sender)) bComplete {
-    self.option = option;
-    
-    __weak typeof(self) pSelf = self;
-    void (^bSafeBlock)(void) = ^ {
-        if (NSThread.isMainThread) {
-            if (bComplete) bComplete(pSelf);
-        }
-        else {
-            if (!bComplete) return ;
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                bComplete(pSelf);
-            });
-        }
-    };
-    
-    switch (self.option) {
-        case cc_audio_playing_option_none:{
-            
-        }break;
-        case cc_audio_playing_option_play:{
-            [self ccPlay];
-        }break;
-        case cc_audio_playing_option_pause:{
-            [self ccPause];
-        }break;
-            
-        default:
-            break;
-    }
-}
+
 - (void) ccSetStopAfter : (NSTimeInterval) interval
                complete : (void (^)(CCAudioHandler *sender)) bComplete {
     if (self.timer) {
@@ -133,8 +100,6 @@ NSTimeInterval _CC_FADE_DURATION_ = 1.f;
     dispatch_resume(self.timer);
 }
 
-#pragma mark - -----
-
 - (void) ccPlay {
     __weak typeof(self) pSelf = self;
     [self.aPlayers enumerateObjectsUsingBlock:^(AVAudioPlayer * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -174,6 +139,9 @@ NSTimeInterval _CC_FADE_DURATION_ = 1.f;
                                                       object:nil
                                                     userInfo:@{@"key" : @(self.option)}];
 }
+
+#pragma mark - -----
+
 - (void) ccInterPause {
     [self.aPlayers makeObjectsPerformSelector:@selector(pause)];
 }

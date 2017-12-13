@@ -24,11 +24,12 @@ FOUNDATION_EXPORT cc_audio_player_notification_s _CC_PLAYER_STATUS_DID_CHANGE_NO
 + (instancetype) shared ;
 - (void) ccSetPlayingArray : (NSArray <NSNumber *> *) aVolume
                   complete : (void (^)(CCAudioHandler *sender)) bComplete ;
-- (void) ccSetAction : (cc_audio_playing_option_t) option
-            complete : (void (^)(CCAudioHandler *sender)) bComplete ;
 - (void) ccSetStopAfter : (NSTimeInterval) interval
                complete : (void (^)(CCAudioHandler *sender)) bComplete ;
 
+- (void) ccPlay ;
+- (void) ccPause ;
+@property (nonatomic , assign , readonly) cc_audio_playing_option_t option ;
 @property (nonatomic , copy) void (^bCurrentTime)(CCAudioHandler *sender , NSString *sFormattedTime , BOOL stop) ;
 
 @end

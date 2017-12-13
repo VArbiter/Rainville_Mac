@@ -13,4 +13,6 @@
 
 @interface CCAudioOperator : NSObject
 
+@property (nonatomic , strong , readonly) NSEvent *eventKeyMonitor ;
+
 @end

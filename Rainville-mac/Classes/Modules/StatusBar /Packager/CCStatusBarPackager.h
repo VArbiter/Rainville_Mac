@@ -39,6 +39,9 @@
 - (void) ccAutoAddMethod ;
 
 @property (nonatomic , copy) void (^bClick)(NSMenuItem *sender);
+@property (nonatomic , copy) void (^bPlayAction)(NSMenuItem *sender , BOOL isPlay);
 - (void) ccTriggerAction : (NSMenuItem *) item ;
+- (void) ccPlayAction : (NSMenuItem *) item ;
+- (void) ccPauseAction : (NSMenuItem *) item ;
 
 @end
