@@ -29,6 +29,7 @@
 
 @property (nonatomic , strong) NSArray *aVolumes ;
 @property (nonatomic , assign) NSInteger iIndex ;
+@property (nonatomic , assign) NSTimeInterval intervalTimeCount ;
 
 @end
 
@@ -40,8 +41,12 @@
 
 @property (nonatomic , copy) void (^bClick)(NSMenuItem *sender);
 @property (nonatomic , copy) void (^bPlayAction)(NSMenuItem *sender , BOOL isPlay);
+@property (nonatomic , copy) void (^bShowWindow)(NSMenuItem *sender);
+@property (nonatomic , copy) void (^bTimerAction)(NSMenuItem *sender);
 - (void) ccTriggerAction : (NSMenuItem *) item ;
 - (void) ccPlayAction : (NSMenuItem *) item ;
 - (void) ccPauseAction : (NSMenuItem *) item ;
+- (void) ccShowWindowAction : (NSMenuItem *) item ;
+- (void) ccInitTimerAction : (NSMenuItem *) item ;
 
 @end

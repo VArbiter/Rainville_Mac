@@ -19,6 +19,8 @@
 "_CC_CANCEL_" = "取消" ;
 "_CC_SET_CLOSE_TIMER_" = "设定在" ;
 "_CC_SET_CLOSE_MINUTES_" = "分钟以后，停止播放" ;
+"_CC_COUNT_DOWN_" = "倒计时";
+"_CC_COUNT_DOWN_MINUTES_" = "分钟";
 
 "_CC_HINT_KEEP_RUNNING_" = "且听细雨，勿湿衣襟" ;
 "_CC_HINT_HEADPHONE_" = "为了不打扰其他人\n请插入耳机聆听" ;

@@ -40,6 +40,12 @@ NSString * _CC_SET_CLOSE_TIMER_() {
 NSString * _CC_SET_CLOSE_MINUTES_() {
     return NSLocalizedString(@"_CC_SET_CLOSE_MINUTES_", nil);
 }
+NSString * _CC_COUNT_DOWN_(void) {
+    return NSLocalizedString(@"_CC_COUNT_DOWN_", nil);
+}
+NSString * _CC_COUNT_DOWN_MINUTES_(void) {
+    return NSLocalizedString(@"_CC_COUNT_DOWN_MINUTES_", nil);
+}
 
 NSString * _CC_HINT_KEEP_RUNNING_() {
     return NSLocalizedString(@"_CC_HINT_KEEP_RUNNING_", nil);

@@ -20,6 +20,8 @@ NSString * _CC_CONFIRM_(void) ;
 NSString * _CC_CANCEL_(void) ;
 NSString * _CC_SET_CLOSE_TIMER_(void) ;
 NSString * _CC_SET_CLOSE_MINUTES_(void) ;
+NSString * _CC_COUNT_DOWN_(void) ;
+NSString * _CC_COUNT_DOWN_MINUTES_(void) ;
 
 NSString * _CC_HINT_KEEP_RUNNING_(void) ;
 NSString * _CC_HINT_HEADPHONE_(void) ;

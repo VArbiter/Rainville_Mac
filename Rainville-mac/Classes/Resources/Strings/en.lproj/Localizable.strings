@@ -19,6 +19,8 @@
 "_CC_CANCEL_" = "Cancel" ;
 "_CC_SET_CLOSE_TIMER_" = "Auto stopped after" ;
 "_CC_SET_CLOSE_MINUTES_" = "minutes" ;
+"_CC_COUNT_DOWN_" = "Count down";
+"_CC_COUNT_DOWN_MINUTES_" = "minutes";
 
 "_CC_HINT_KEEP_RUNNING_" = "Rain, Rain, Rain, \ncome again and again…" ;
 "_CC_HINT_HEADPHONE_" = "Please plugin headset before playing." ;

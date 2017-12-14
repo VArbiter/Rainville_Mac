@@ -70,6 +70,13 @@
     return [objc_getAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_INDEX") integerValue];
 }
 
+- (void)setIntervalTimeCount:(NSTimeInterval)intervalTimeCount {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_TIME_INTERVAL", @(intervalTimeCount), OBJC_ASSOCIATION_ASSIGN);
+}
+- (NSTimeInterval)intervalTimeCount {
+    return [objc_getAssociatedObject(self, "CC_ASSOCIATE_MENU_ITEM_TIME_INTERVAL") doubleValue];
+}
+
 @end
 
 @implementation CCStatusBarPackager (CCAssists)
@@ -86,22 +93,20 @@
 - (void (^)(NSMenuItem *, BOOL))bPlayAction {
     return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_PLAYING_ACTION");
 }
+- (void)setBShowWindow:(void (^)(NSMenuItem *))bShowWindow {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_SHOW_WINDOW_ACTION", bShowWindow, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+- (void (^)(NSMenuItem *))bShowWindow {
+    return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_SHOW_WINDOW_ACTION");
+}
+- (void)setBTimerAction:(void (^)(NSMenuItem *))bTimerAction {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_TIMER_ACTION", bTimerAction, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+- (void (^)(NSMenuItem *))bTimerAction {
+    return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_TIMER_ACTION");
+}
 
 - (void) ccAutoAddMethod {
-    NSMenuItem *itemRainPlay = [[NSMenuItem alloc] init];
-    itemRainPlay.title = _CC_PLAY_();
-    itemRainPlay.target = self;
-    itemRainPlay.action = @selector(ccPlayAction:);
-    itemRainPlay.keyEquivalent = @"R";
-    [self.menuRainType insertItem:itemRainPlay atIndex:0];
-    
-    NSMenuItem *itemRainPause = [[NSMenuItem alloc] init];
-    itemRainPause.title = _CC_STOP_();
-    itemRainPause.target = self;
-    itemRainPause.action = @selector(ccPauseAction:);
-    itemRainPause.keyEquivalent = @"P";
-    [self.menuRainType insertItem:itemRainPause atIndex:0];
-    
     NSMenuItem *itemRainType = [[NSMenuItem alloc] initWithTitle:_CC_APP_DESP_() action:nil keyEquivalent:@""];
     [self.menuRainType insertItem:itemRainType atIndex:0];
     
@@ -119,6 +124,49 @@
         item.action = @selector(ccTriggerAction:);
         [menuRain addItem:item];
     }];
+    
+    NSMenuItem *itemRainTime = [[NSMenuItem alloc] initWithTitle:_CC_COUNT_DOWN_() action:nil keyEquivalent:@""];
+    [self.menuRainType addItem:itemRainTime];
+    
+    NSMenu *menuRainTime = [[NSMenu alloc] init];
+    itemRainTime.submenu = menuRainTime;
+    
+    NSArray <NSString *> *aTime = @[@"0" , @"5" , @"10" , @"15" , @"20" ,
+                                    @"25" , @"30" , @"35" , @"40" , @"45" ,
+                                    @"50" , @"55" , @"60" , @"90" , @"120" ];
+    [aTime enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSMenuItem *item = [[NSMenuItem alloc] init];
+        item.iIndex = idx;
+        item.intervalTimeCount = obj.doubleValue;
+        if (obj.doubleValue == .0f) {
+            item.title = _CC_STOP_();
+        }
+        else item.title = [[obj stringByAppendingString:@" "] stringByAppendingString:_CC_COUNT_DOWN_MINUTES_()];
+        item.target = self;
+        item.action = @selector(ccInitTimerAction:);
+        [menuRainTime addItem:item];
+    }];
+    
+    NSMenuItem *itemRainPause = [[NSMenuItem alloc] init];
+    itemRainPause.title = _CC_STOP_();
+    itemRainPause.target = self;
+    itemRainPause.action = @selector(ccPauseAction:);
+    itemRainPause.keyEquivalent = @"P";
+    [self.menuRainType addItem:itemRainPause];
+    
+    NSMenuItem *itemRainPlay = [[NSMenuItem alloc] init];
+    itemRainPlay.title = _CC_PLAY_();
+    itemRainPlay.target = self;
+    itemRainPlay.action = @selector(ccPlayAction:);
+    itemRainPlay.keyEquivalent = @"R";
+    [self.menuRainType addItem:itemRainPlay];
+    
+    NSMenuItem *itemThanks = [[NSMenuItem alloc] init];
+    itemThanks.title = _CC_HINT_WELCOME_USE_RAINVILLE_();
+    itemThanks.target = self;
+    itemThanks.action = @selector(ccShowWindowAction:);
+    itemThanks.keyEquivalent = @"T";
+    [self.menuRainType addItem:itemThanks];
 }
 
 - (void) ccTriggerAction : (NSMenuItem *) item {
@@ -129,6 +177,12 @@
 }
 - (void) ccPauseAction : (NSMenuItem *) item {
     if (self.bPlayAction) self.bPlayAction(item, false);
+}
+- (void) ccShowWindowAction : (NSMenuItem *) item {
+    if (self.bShowWindow) self.bShowWindow(item);
+}
+- (void) ccInitTimerAction : (NSMenuItem *) item {
+    if (self.bTimerAction) self.bTimerAction(item);
 }
 
 @end
