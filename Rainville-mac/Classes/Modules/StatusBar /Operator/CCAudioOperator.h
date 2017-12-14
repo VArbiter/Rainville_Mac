@@ -16,3 +16,16 @@
 @property (nonatomic , strong , readonly) NSEvent *eventKeyMonitor ;
 
 @end
+
+#pragma mark - -----
+
+#import "CCMainController.h"
+
+@interface CCAudioOperator (CCWindow)
+
+@property (nonatomic , strong) CCMainController *mainController ;
+@property (nonatomic , strong) NSWindow *window;
+- (void) ccMakeBriefWindowVisiable ;
+
+@end
+

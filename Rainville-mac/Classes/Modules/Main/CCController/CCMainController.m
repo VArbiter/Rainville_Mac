@@ -15,7 +15,7 @@
 @interface CCMainController ()
 
 @property (nonatomic , strong) NSLabel *labelPoem ;
-@property (nonatomic , strong) CCScrollContent *scrollContent ;
+@property (nonatomic , strong) NSScrollView *scrollContent ;
 
 @end
 
@@ -43,9 +43,21 @@
     [self.scrollContent addSubview:self.labelPoem];
 }
 
-- (CCScrollContent *)scrollContent {
+- (void)setSTime:(NSString *)sTime {
+    _sTime = sTime;
+#warning TODO >>> TIME LABEL
+    if (_sTime && _sTime.length > 0) {
+        
+    }
+    else {
+        
+    }
+}
+
+- (NSScrollView *)scrollContent {
     if (_scrollContent) return _scrollContent;
-    CCScrollContent *v = [[CCScrollContent alloc] initWithFrame:self.view.bounds];
+    NSScrollView *v = [[NSScrollView alloc] initWithFrame:self.view.bounds];
+    v.backgroundColor = NSColor.clearColor;
     _scrollContent = v;
     return _scrollContent;
 }

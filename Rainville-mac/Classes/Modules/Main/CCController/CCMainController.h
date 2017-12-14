@@ -10,4 +10,6 @@
 
 @interface CCMainController : NSViewController
 
+@property (nonatomic , strong) NSString * sTime ;
+
 @end

@@ -9,4 +9,5 @@
 @import Foundation;
 
 NSDictionary <NSString * , NSArray <NSNumber *> *> * cc_default_audio_settings(void) ;
+NSArray <NSArray <NSNumber *> *> *cc_default_audio_volumes(void) ;
 NSArray <NSURL *> * cc_audio_file_path(void) ;

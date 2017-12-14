@@ -9,7 +9,45 @@
 #import "CCAudioPreset.h"
 #import "CCLocalizedHelper.h"
 
+NSDictionary <NSString * , NSArray <NSNumber *> *> * __dSettings = nil;
+NSArray <NSArray <NSNumber *> *> * __aVolumes = nil;
+NSArray <NSURL *> * __aFilePaths = nil;
+
 NSDictionary <NSString * , NSArray <NSNumber *> *> * cc_default_audio_settings(void) {
+    
+    if (__dSettings) return __dSettings;
+    
+    NSArray <NSString *> *array = _CC_ARRAY_ITEM_();
+    NSDictionary *d = @{array[0] : cc_default_audio_volumes()[0],
+                        array[1] : cc_default_audio_volumes()[1],
+                        array[2] : cc_default_audio_volumes()[2],
+                        array[3] : cc_default_audio_volumes()[3],
+                        array[4] : cc_default_audio_volumes()[4],
+                        array[5] : cc_default_audio_volumes()[5],
+                        array[6] : cc_default_audio_volumes()[6],
+                        array[7] : cc_default_audio_volumes()[7],
+                        array[8] : cc_default_audio_volumes()[8],
+                        array[9] : cc_default_audio_volumes()[9],
+                        array[10] : cc_default_audio_volumes()[10],
+                        array[11] : cc_default_audio_volumes()[11],
+                        array[12] : cc_default_audio_volumes()[12],
+                        array[13] : cc_default_audio_volumes()[13],
+                        array[14] : cc_default_audio_volumes()[14],
+                        array[15] : cc_default_audio_volumes()[15],
+                        array[16] : cc_default_audio_volumes()[16],
+                        array[17] : cc_default_audio_volumes()[17],
+                        array[18] : cc_default_audio_volumes()[18],
+                        array[19] : cc_default_audio_volumes()[19],
+                        array[20] : cc_default_audio_volumes()[20],
+                        array[21] : cc_default_audio_volumes()[21]};
+    __dSettings = d;
+    return __dSettings;
+}
+
+NSArray <NSArray <NSNumber *> *> * cc_default_audio_volumes(void) {
+    
+    if (__aVolumes) return __aVolumes;
+    
     NSArray <NSNumber *> * _CC_FAIRY_RAIN_ = @[@(.0f),@(.0f),@(.0f),@(.0f),@(.1f),@(.2f),@(.3f),@(.4f),@(.5f),@(.6f)];
     
     NSArray <NSNumber *> * _CC_BEDROOM_ = @[@(.0f),@(.0f),@(.0f),@(.0f),@(.1f),@(.2f),@(.3f),@(.2f),@(.1f),@(.0f)];
@@ -56,37 +94,43 @@ NSDictionary <NSString * , NSArray <NSNumber *> *> * cc_default_audio_settings(v
     
     NSArray <NSNumber *> * _CC_DEFAULT_PRESET_ = _CC_PINK_NOISE_.copy;
     
-    NSArray <NSString *> *array = _CC_ARRAY_ITEM_();
-    return @{array[0] : _CC_DEFAULT_PRESET_,
-             array[1] : _CC_FAIRY_RAIN_,
-             array[2] : _CC_BEDROOM_,
-             array[3] : _CC_UNDER_THE_PORCH_,
-             array[4] : _CC_DISTANT_STORM_,
-             array[5] : _CC_GETTING_WET_,
-             array[6] : _CC_ONLY_RUMBLE_,
-             array[7] : _CC_UNDER_THE_LEAVES_,
-             array[8] : _CC_DARK_RAIN_,
-             array[9] : _CC_JUNGLE_LODGE_,
-             array[10] : _CC_BROWN_NOISE_,
-             array[11] : _CC_PINK_NOISE_,
-             array[12] : _CC_WHITE_NOISE_,
-             array[13] : _CC_GREY_NOISE_,
-             array[14] : _CC_60_HZ_,
-             array[15] : _CC_125_HZ_,
-             array[16] : _CC_250_HZ_,
-             array[17] : _CC_500_HZ_,
-             array[18] : _CC_1K_HZ_,
-             array[19] : _CC_2K_HZ_,
-             array[20] : _CC_4K_HZ_,
-             array[21] : _CC_8K_HZ_};
+    NSArray *a = @[_CC_DEFAULT_PRESET_,
+                   _CC_FAIRY_RAIN_,
+                   _CC_BEDROOM_,
+                   _CC_UNDER_THE_PORCH_,
+                   _CC_DISTANT_STORM_,
+                   _CC_GETTING_WET_,
+                   _CC_ONLY_RUMBLE_,
+                   _CC_UNDER_THE_LEAVES_,
+                   _CC_DARK_RAIN_,
+                   _CC_JUNGLE_LODGE_,
+                   _CC_BROWN_NOISE_,
+                   _CC_PINK_NOISE_,
+                   _CC_WHITE_NOISE_,
+                   _CC_GREY_NOISE_,
+                   _CC_60_HZ_,
+                   _CC_125_HZ_,
+                   _CC_250_HZ_,
+                   _CC_500_HZ_,
+                   _CC_1K_HZ_,
+                   _CC_2K_HZ_,
+                   _CC_4K_HZ_,
+                   _CC_8K_HZ_];
+    __aVolumes = a;
+    return __aVolumes;
 }
+
 NSArray <NSURL *> * cc_audio_file_path(void) {
+    
+    if (__aFilePaths) return __aFilePaths;
+    
     NSMutableArray *a = [NSMutableArray array];
     for (short i = 0; i < 10; i++) {
         NSString *s = [NSString stringWithFormat:@"_%d",i];
         NSString *sPath = [[NSBundle mainBundle] pathForResource:s ofType:@"wav"];
         [a addObject:[NSURL fileURLWithPath:sPath]];
     }
-    return a;
+    __aFilePaths = a;
+    return __aFilePaths;
 }
 

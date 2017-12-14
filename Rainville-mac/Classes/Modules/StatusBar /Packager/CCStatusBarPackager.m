@@ -35,7 +35,7 @@
     if (_statusItem) return _statusItem;
     NSStatusItem *b = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
     [b.button setImage:[NSImage imageNamed:@"icon_status_bar"]];
-    [b setToolTip:_CC_RAIN_POEM_()];
+    b.toolTip = _CC_RAIN_POEM_();
     b.menu = self.menuRainType;
     _statusItem = b;
     return _statusItem;
