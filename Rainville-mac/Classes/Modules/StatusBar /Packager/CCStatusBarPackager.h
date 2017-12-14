@@ -50,5 +50,6 @@
 - (void) ccShowWindowAction : (NSMenuItem *) item ;
 - (void) ccInitTimerAction : (NSMenuItem *) item ;
 - (void) ccShowAuthorAction : (NSMenuItem *) item ;
+- (void) ccQuitAppAction : (NSMenuItem *) item ;
 
 @end

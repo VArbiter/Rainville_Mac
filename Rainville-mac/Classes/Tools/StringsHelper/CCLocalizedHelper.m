@@ -46,6 +46,12 @@ NSString * _CC_COUNT_DOWN_(void) {
 NSString * _CC_COUNT_DOWN_MINUTES_(void) {
     return NSLocalizedString(@"_CC_COUNT_DOWN_MINUTES_", nil);
 }
+NSString * _CC_QUIT_RAINVILLE_(void) {
+    return NSLocalizedString(@"_CC_QUIT_RAINVILLE_", nil);
+}
+NSString * _CC_ABOUT_RAINVILLE_(void) {
+    return NSLocalizedString(@"_CC_ABOUT_RAINVILLE_", nil);
+}
 
 NSString * _CC_HINT_KEEP_RUNNING_() {
     return NSLocalizedString(@"_CC_HINT_KEEP_RUNNING_", nil);

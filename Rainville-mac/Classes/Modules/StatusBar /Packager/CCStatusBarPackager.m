@@ -174,16 +174,25 @@
     [self.menuRainType addItem:itemSeparate1];
     
     NSMenuItem *itemThanks = [[NSMenuItem alloc] init];
-    itemThanks.title = _CC_HINT_WELCOME_USE_RAINVILLE_();
+    itemThanks.title = _CC_ABOUT_RAINVILLE_();
     itemThanks.target = self;
     itemThanks.action = @selector(ccShowWindowAction:);
     itemThanks.keyEquivalent = @"T";
     [self.menuRainType addItem:itemThanks];
     
+    NSMenuItem *itemKill = [[NSMenuItem alloc] init];
+    itemKill.title = _CC_QUIT_RAINVILLE_();
+    itemKill.target = self;
+    itemKill.action = @selector(ccQuitAppAction:);
+    [self.menuRainType addItem:itemKill];
+    
+    NSMenuItem *itemSeparate2 = [NSMenuItem separatorItem];
+    [self.menuRainType addItem:itemSeparate2];
+    
     NSMenuItem *itemAuthor = [[NSMenuItem alloc] init];
-    itemAuthor.title = @"By Elwin Frederick";
-    itemAuthor.target = self;
-    itemAuthor.action = @selector(ccShowAuthorAction:);
+    itemAuthor.title = @"By Elwin Frederick .";
+//    itemAuthor.target = self;
+//    itemAuthor.action = @selector(ccShowAuthorAction:);
     [self.menuRainType addItem:itemAuthor];
 }
 
@@ -204,6 +213,9 @@
 }
 - (void) ccShowAuthorAction : (NSMenuItem *) item {
     if (self.bAuthorAction) self.bAuthorAction(item);
+}
+- (void) ccQuitAppAction : (NSMenuItem *) item {
+    [NSApp terminate:nil];
 }
 
 @end
