@@ -31,5 +31,6 @@ FOUNDATION_EXPORT cc_audio_player_notification_s _CC_PLAYER_STATUS_DID_CHANGE_NO
 - (void) ccPause ;
 @property (nonatomic , assign , readonly) cc_audio_playing_option_t option ;
 @property (nonatomic , copy) void (^bCurrentTime)(CCAudioHandler *sender , NSString *sFormattedTime , BOOL stop) ;
+@property (nonatomic , assign , readonly) BOOL isEmpty ;
 
 @end

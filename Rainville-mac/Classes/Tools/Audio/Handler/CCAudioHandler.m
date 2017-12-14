@@ -140,6 +140,10 @@ NSTimeInterval _CC_FADE_DURATION_ = 1.f;
                                                     userInfo:@{@"key" : @(self.option)}];
 }
 
+- (BOOL)isEmpty {
+    return !(_aVolumesCurrent && (_aVolumesCurrent.count > 0));
+}
+
 #pragma mark - -----
 
 - (void) ccInterPause {

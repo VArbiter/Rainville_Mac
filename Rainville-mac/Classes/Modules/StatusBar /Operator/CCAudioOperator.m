@@ -62,7 +62,11 @@ static CCAudioOperator *__instance = nil;
     };
     self.packager.bPlayAction = ^(NSMenuItem *sender, BOOL isPlay) {
         if (isPlay) {
-            [pSelf.handler ccPlay];
+            if (pSelf.handler.isEmpty) {
+                [pSelf.handler ccSetPlayingArray:cc_default_audio_volumes()[0]
+                                        complete:nil];
+            }
+            else [pSelf.handler ccPlay];
         }
         else [pSelf.handler ccPause];
     };
@@ -71,9 +75,8 @@ static CCAudioOperator *__instance = nil;
     };
     self.packager.bTimerAction = ^(NSMenuItem *sender) {
         if (pSelf.handler.option != cc_audio_playing_option_play) {
-            [pSelf.handler ccSetPlayingArray:cc_default_audio_volumes()[0] complete:^(CCAudioHandler *sender) {
-                
-            }];
+            [pSelf.handler ccSetPlayingArray:cc_default_audio_volumes()[0]
+                                    complete:nil];
         }
         [pSelf.handler ccSetStopAfter:(sender.intervalTimeCount * 60.f) complete:^(CCAudioHandler *sender) {
             
