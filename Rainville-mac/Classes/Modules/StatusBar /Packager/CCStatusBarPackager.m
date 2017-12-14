@@ -43,7 +43,7 @@
 
 - (NSMenu *)menuRainType {
     if (_menuRainType) return _menuRainType;
-    NSMenu *m = [[NSMenu alloc] initWithTitle:@"By Elwin Frederick"];
+    NSMenu *m = [[NSMenu alloc] init];
     _menuRainType = m;
     return _menuRainType;
 }
@@ -105,6 +105,12 @@
 - (void (^)(NSMenuItem *))bTimerAction {
     return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_TIMER_ACTION");
 }
+- (void)setBAuthorAction:(void (^)(NSMenuItem *))bAuthorAction {
+    objc_setAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_AUTHOR_ACTION", bAuthorAction, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+- (void (^)(NSMenuItem *))bAuthorAction {
+    return objc_getAssociatedObject(self, "CC_ASSOCIATE_STATUS_PACKAGER_AUTHOR_ACTION");
+}
 
 - (void) ccAutoAddMethod {
     NSMenuItem *itemRainType = [[NSMenuItem alloc] initWithTitle:_CC_APP_DESP_() action:nil keyEquivalent:@""];
@@ -124,6 +130,9 @@
         item.action = @selector(ccTriggerAction:);
         [menuRain addItem:item];
     }];
+    
+    NSMenuItem *itemSeparate0 = [NSMenuItem separatorItem];
+    [self.menuRainType addItem:itemSeparate0];
     
     NSMenuItem *itemRainTime = [[NSMenuItem alloc] initWithTitle:_CC_COUNT_DOWN_() action:nil keyEquivalent:@""];
     [self.menuRainType addItem:itemRainTime];
@@ -161,12 +170,21 @@
     itemRainPlay.keyEquivalent = @"R";
     [self.menuRainType addItem:itemRainPlay];
     
+    NSMenuItem *itemSeparate1 = [NSMenuItem separatorItem];
+    [self.menuRainType addItem:itemSeparate1];
+    
     NSMenuItem *itemThanks = [[NSMenuItem alloc] init];
     itemThanks.title = _CC_HINT_WELCOME_USE_RAINVILLE_();
     itemThanks.target = self;
     itemThanks.action = @selector(ccShowWindowAction:);
     itemThanks.keyEquivalent = @"T";
     [self.menuRainType addItem:itemThanks];
+    
+    NSMenuItem *itemAuthor = [[NSMenuItem alloc] init];
+    itemAuthor.title = @"By Elwin Frederick";
+    itemAuthor.target = self;
+    itemAuthor.action = @selector(ccShowAuthorAction:);
+    [self.menuRainType addItem:itemAuthor];
 }
 
 - (void) ccTriggerAction : (NSMenuItem *) item {
@@ -183,6 +201,9 @@
 }
 - (void) ccInitTimerAction : (NSMenuItem *) item {
     if (self.bTimerAction) self.bTimerAction(item);
+}
+- (void) ccShowAuthorAction : (NSMenuItem *) item {
+    if (self.bAuthorAction) self.bAuthorAction(item);
 }
 
 @end

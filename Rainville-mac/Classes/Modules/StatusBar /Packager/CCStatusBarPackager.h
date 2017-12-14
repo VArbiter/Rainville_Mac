@@ -43,10 +43,12 @@
 @property (nonatomic , copy) void (^bPlayAction)(NSMenuItem *sender , BOOL isPlay);
 @property (nonatomic , copy) void (^bShowWindow)(NSMenuItem *sender);
 @property (nonatomic , copy) void (^bTimerAction)(NSMenuItem *sender);
+@property (nonatomic , copy) void (^bAuthorAction)(NSMenuItem *sender);
 - (void) ccTriggerAction : (NSMenuItem *) item ;
 - (void) ccPlayAction : (NSMenuItem *) item ;
 - (void) ccPauseAction : (NSMenuItem *) item ;
 - (void) ccShowWindowAction : (NSMenuItem *) item ;
 - (void) ccInitTimerAction : (NSMenuItem *) item ;
+- (void) ccShowAuthorAction : (NSMenuItem *) item ;
 
 @end
