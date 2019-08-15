@@ -73,16 +73,24 @@ static CCAudioOperator *__instance = nil;
     self.packager.bShowWindow = ^(NSMenuItem *sender) {
         [pSelf ccMakeBriefWindowVisiable];
     };
-    self.packager.bTimerAction = ^(NSMenuItem *sender) {
+    self.packager.bTimerAction = ^(NSMenuItem *sender_menu_item) {
         if (pSelf.handler.option != cc_audio_playing_option_play) {
             [pSelf.handler ccSetPlayingArray:cc_default_audio_volumes()[0]
                                     complete:nil];
         }
-        [pSelf.handler ccSetStopAfter:(sender.intervalTimeCount * 60.f) complete:^(CCAudioHandler *sender) {
+        [pSelf.handler ccSetStopAfter:(sender_menu_item.intervalTimeCount * 60.f) complete:^(CCAudioHandler *sender) {
             
         }];
     };
     [self eventKeyMonitor];
+    
+    NSString *s_temp_title = self.packager.item_rain_time.title;
+    self.handler.bCurrentTime = ^(CCAudioHandler *sender, NSString *sFormattedTime, BOOL stop) {
+        if (stop) {
+            pSelf.packager.item_rain_time.title = s_temp_title;
+        }
+        else pSelf.packager.item_rain_time.title = [NSString stringWithFormat:@"%@ ( %@ )" , s_temp_title , sFormattedTime];
+    };
 }
 
 - (CCStatusBarPackager *)packager {

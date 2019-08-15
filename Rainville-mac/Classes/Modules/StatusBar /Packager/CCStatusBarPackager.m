@@ -12,6 +12,7 @@
 
 @property (nonatomic , strong , readwrite) NSStatusItem *statusItem ;
 @property (nonatomic , strong , readwrite) NSMenu *menuRainType ;
+@property (nonatomic , strong , readwrite) NSMenuItem *item_rain_time ;
 
 - (void) ccDefaultSettings ;
 
@@ -46,6 +47,13 @@
     NSMenu *m = [[NSMenu alloc] init];
     _menuRainType = m;
     return _menuRainType;
+}
+
+- (NSMenuItem *)item_rain_time {
+    if (_item_rain_time) return _item_rain_time;
+    NSMenuItem *t = [[NSMenuItem alloc] initWithTitle:_CC_COUNT_DOWN_() action:nil keyEquivalent:@""];
+    _item_rain_time = t;
+    return _item_rain_time;
 }
 
 @end
@@ -134,11 +142,10 @@
     NSMenuItem *itemSeparate0 = [NSMenuItem separatorItem];
     [self.menuRainType addItem:itemSeparate0];
     
-    NSMenuItem *itemRainTime = [[NSMenuItem alloc] initWithTitle:_CC_COUNT_DOWN_() action:nil keyEquivalent:@""];
-    [self.menuRainType addItem:itemRainTime];
+    [self.menuRainType addItem:self.item_rain_time];
     
     NSMenu *menuRainTime = [[NSMenu alloc] init];
-    itemRainTime.submenu = menuRainTime;
+    self.item_rain_time.submenu = menuRainTime;
     
     NSArray <NSString *> *aTime = @[@"0" , @"5" , @"10" , @"15" , @"20" ,
                                     @"25" , @"30" , @"35" , @"40" , @"45" ,

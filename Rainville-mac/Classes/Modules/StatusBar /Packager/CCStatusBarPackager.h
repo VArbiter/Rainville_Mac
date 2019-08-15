@@ -20,6 +20,7 @@
 @property (nonatomic , strong , readonly) NSStatusItem *statusItem ;
 
 @property (nonatomic , strong , readonly) NSMenu *menuRainType ;
+@property (nonatomic , strong , readonly) NSMenuItem *item_rain_time ;
 
 @end
 
